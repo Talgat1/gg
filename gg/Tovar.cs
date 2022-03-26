@@ -12,10 +12,12 @@ namespace gg
         public string Proizvod { get; set; }
         public int Price { get; set; }
         public string Activity { get; set; }
+        public int Coll { get; set; }
+
 
         public override string ToString()
         {
-            return "Номер(Id): " + Id + ", Наименование: " + Name + ", Описание: " + Opisanie + ", Производитель: " + Proizvod + ", Цена: " + Price + "руб., Активный: " + Activity;
+            return "Номер(Id): " + Id + ", Наименование: " + Name + ", Описание: " + Opisanie + ", Производитель: " + Proizvod + ", Цена: " + Price + "руб., Активный: " + Activity + "Количество:" + Coll;
         }
 
         public override bool Equals(object obj)
