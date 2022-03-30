@@ -10,6 +10,7 @@ namespace gg
         static void Main(string[] args)
         {
             int cc = 0;
+            
             Console.WriteLine("Список товара:");
             List<Tovar> t = new List<Tovar>();
             t.Add(new Tovar() { Id = 1001, Name = "Юла", Opisanie = "Разноцветная", Proizvod = "Татпромгаз", Price = 400, Activity = "Да", Coll = 5 });
@@ -34,11 +35,9 @@ namespace gg
             {
                 if (cam == 1)
                 {
-                    int b = 0;
-                    
+                    int b = 0;                   
                     Console.WriteLine("Введите название или описание товара:");
-                    string s = Console.ReadLine();
-                    
+                    string s = Console.ReadLine();                   
                     var sorted1 = from p in t
                                         orderby p.Name, p.Opisanie
                                         select p;
@@ -79,6 +78,23 @@ namespace gg
                     foreach (var p in sorted2)
                         Console.WriteLine(p);
                 }
+
+                Console.WriteLine("Введите название товара для покупки:");
+                string ss = Console.ReadLine();
+                var sorted3 = from r in t
+                              orderby r.Name
+                              select r;
+
+                foreach (var r in sorted3)
+                {
+                    if (ss == r.Name)
+                    {
+                        cc = r.Coll;
+                        //Console.WriteLine($"{p.Name} + {p.Id} ");
+                        Console.WriteLine($"Номер(Id): {r.Id}, Наименование: {r.Name}, Описание: {r.Opisanie}, Производитель: {r.Proizvod}, Цена: {r.Price}руб., Активный:{r.Activity}, Количество:{r.Coll}");                        
+                    }
+                }
+
                 Console.WriteLine("Введите количество товара:");
                 if ((!int.TryParse(Console.ReadLine(), out var call)) || call < 1 || call > cc)
                 {
@@ -97,10 +113,8 @@ namespace gg
                     }
                     else
                     {
-                        Console.WriteLine("Введите ваше ФИО");                        
-                        string fio = Console.ReadLine();
-                        Console.WriteLine("Введите телефон:");
-                        int phone = Convert.ToInt32(Console.ReadLine());
+                        Console.WriteLine("Введите ваше ФИО и номер телефона");                        
+                        string fioPh = Console.ReadLine();                        
                         Console.WriteLine("Выберите вид доставки:");
                         Console.WriteLine("1- Самовывоз");
                         Console.WriteLine("2- Доставка");
